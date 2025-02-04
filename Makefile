@@ -39,17 +39,17 @@ TABLE_PARAM ?=  $(if $(table),$(table),default_table)
 migrate_create:
 	@echo "Migrating up the dadabase..."
 	@echo $(TABLE_PARAM)
-	migrate create -ext sql -dir internal/storage/migrations -seq $(TABLE_PARAM)
+	migrate create -ext sql -dir internal/db/migrations -seq $(TABLE_PARAM)
 
 ## migration_up: migrate up
 migrate_up:
 	@echo "Migrating up the dadabase..."
-	migrate -path internal/storage/migrations -database ${DSN} -verbose up
+	migrate -path internal/db/migrations -database ${DSN} -verbose up
 
 ## migration_down: migrate down
 migrate_down:
 	@echo "Migrating down the dadabase..."
-	migrate -path internal/storage/migrations -database ${DSN} -verbose down
+	migrate -path internal/db/migrations -database ${DSN} -verbose down
 
 ## generate docs
 gen-docs:
